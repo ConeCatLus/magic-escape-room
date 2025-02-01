@@ -1,0 +1,586 @@
+ /* Full-page background */
+ body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #1a1a1a;
+    color: #fff;
+    text-align: center;
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+    background: url('assets/images/start-background.jpg') no-repeat center center fixed; /* Replace with your image path */
+    background-size: cover; /* Ensure the image covers the entire screen */
+    display: flex;
+    justify-content: center; /* Center the black square horizontally */
+    align-items: center; /* Center the black square vertically */
+  }
+  
+  /* Black square container */
+  .black-square {
+    width: 80%; /* Takes up 70% of the screen's width */
+    height: 80%; /* Takes up 70% of the screen's height */
+    background-color: rgba(0, 0, 0, 0.6); /* Black with slight transparency (adjust opacity as needed) */
+    color: white; /* Text color inside the square */
+    padding: 20px; /* Add padding inside the square for better readability */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Optional shadow effect */
+    border-radius: 10px; /* Optional rounded corners */
+    overflow-y: auto; /* Scroll if the content exceeds the box size */
+    position: relative; /* Set relative positioning for the container */
+  }
+
+  h1 {
+    color: #ffcb00;
+    margin-block-start: 0.3em;
+    margin-block-end: 0em;
+    font-size: 4em;
+  }
+  
+  p {
+    margin-block-start: 0.1em;
+    margin-block-end: 0.1em;
+    font-size: 1.5em;
+  }
+  
+  button {
+    position: absolute; /* Allow precise placement */
+    bottom: 2%;
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for centering */
+    background-color: #6a0dad;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 20px 30px;
+    font-size: 25px;
+    cursor: pointer;
+  }
+
+  .back-button {
+    left: 10%;
+  }
+  
+  button:hover {
+    background-color: #530b8c;
+  }
+  
+  .clue-image {
+    max-width: 100%;
+    margin: 20px 0;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  /* Optional: Add some styling for the screens */
+  .screen {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .narrator-text {
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  /* Game Screen */
+#riddleText {
+    margin-bottom: 20px;
+    font-family: 'Georgia', serif;
+    font-size: 18px;
+    color: white;
+  }
+  
+  /* #riddleImages {
+    display: flex;
+    justify-content: center; /* Center content horizontally *
+    align-items: center; /* Align items vertically *
+    gap: 10px; /* Space between elements *
+    flex-wrap: wrap; /* Allow wrapping if needed *
+  }
+  
+  #riddleImages img {
+    width: 5%; /* Adjust size to fit *
+    height: auto;
+    border: 2px solid white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  } */
+  
+  #numberInputs {
+    display: flex; /* Align inputs horizontally */
+    justify-content: center; /* Center the inputs */
+    gap: 20px; /* Add space between in puts */
+    margin: 20px 0;
+  }
+  
+  #numberInputs input {
+    width: 60px; /* Adjust size for better visibility */
+    height: 60px; /* Make it a perfect square */
+    padding: 10px;
+    font-size: 50px; /* Slightly larger font for emphasis */
+    font-family: 'Cinzel', serif; /* Use a fantasy-inspired font */
+    color: #fff; /* White text */
+    background: linear-gradient(145deg, #412d22, #6e4f34); /* Rich gradient background */
+    border: 3px solid #d4af37; /* Gold-like border */
+    border-radius: 10px; /* Slightly rounded corners for elegance */
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5), 0 0 5px rgba(0, 0, 0, 0.7); /* Glowing effect with shadow */
+    text-align: center; /* Center text */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Add hover animations */
+  }
+  
+  #numberInputs input:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.8), 0 0 10px rgba(0, 0, 0, 0.9); /* Intense glow on focus */
+    transform: scale(1.1); /* Slightly enlarge the input */
+  }
+  
+  #numberInputs input::placeholder {
+    color: #bda97b; /* Subtle placeholder color */
+    font-style: italic;
+  }
+  
+  
+  #input-container button {
+    position: relative; /* Override absolute positioning */
+    bottom: auto; /* Reset bottom */
+    left: auto; /* Reset left */
+    transform: none; /* Reset transform */
+    margin-left: 10px; /* Add space between input and button */
+    background-color: #6a0dad; /* Unique color for this button */
+    padding: 10px 15px; /* Adjust padding */
+    font-size: 16px; /* Smaller size for this context */
+  }
+  
+  #input-container button:hover {
+    background-color: #530b8c; /* Unique hover effect */
+  }
+
+  #feedback {
+    margin-top: 10px;
+    font-size: 16px;
+    color: yellow;
+  }
+
+  #map-container {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    margin: 20px auto;
+    overflow: hidden;
+    border: 5px solid #555;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    display: none; /* Hidden initially */
+  }
+  
+  #map {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.3) contrast(1);
+  }
+
+  .vortex {
+    animation: reverseToiletSpin 10s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes reverseToiletSpin {
+  0% {
+    transform: rotate(0deg) scale(1); /* Small and faint */
+    opacity: 1;
+  }
+  90% {
+    transform: rotate(1440deg) scale(1.2); /* Spin and grow */
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(1500deg) scale(0); /* Settle into position */
+    opacity: 0;
+  }
+}
+
+  #reveal-area {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    display: none;
+  }
+
+  #reveal-area.button {
+    /* Include any button styles you want to apply here */
+    background-color: rgba(255, 0, 0, 0.7);
+    color: white;
+  }
+  
+  #input-container {
+    margin-top: 20px;
+  }
+  
+  #coordinates {
+    font-size: 16px;
+    padding: 5px;
+    width: 120px;
+  }
+  
+  #submit-coordinates {
+    font-size: 16px;
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #5c5cff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  #submit-coordinates:hover {
+    background-color: #4a4ac0;
+  }
+  
+  #feedback {
+    font-size: 16px;
+    color: #ff5757;
+  }
+  
+  .hidden {
+    display: none;
+  }
+
+  /* Health Bars and Avatar Styling */
+#avatars {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.avatar {
+  text-align: center;
+}
+
+.avatar-image {
+  width: 100px; /* Adjust the size of the avatars */
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.health-bar-container {
+  width: 120px;
+  height: 20px;
+  background-color: #444;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.health-bar {
+  width: 100%;
+  height: 100%;
+  background-color: #d9534f;
+  position: relative;
+}
+
+.health {
+  height: 100%;
+  background-color: #d9534f;
+  transition: width 0.5s ease-in-out; /* Smooth transition */
+}
+
+#player-health {
+  background-color: #5bc0de; /* Blue for player health */
+}
+
+#malakar-health {
+  background-color: #5bc0de; /* Red for Malakar health */
+}
+
+#player-spells {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+#player-spells button {
+  font-size: 20px;
+  padding: 15px 25px;
+  border: none;
+  transform: none;
+  position: inherit;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #6a0dad;
+  color: white;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+#player-spells button:hover {
+  transform: scale(1.1);
+  background-color: #530b8c;
+}
+
+#battle-feedback p {
+  margin-top: 20px;
+  font-size: 18px;
+  color: white;
+}
+
+/* Great Hall */
+#greatHallScreen {
+  position: relative;
+  text-align: center;
+}
+
+#greatHallScreen img {
+  width: 100%;
+  max-width: 2000px;
+  height: auto;
+}
+
+/* Door Buttons and Labels */
+#doors {
+  position: absolute; /* Overlay buttons and labels on the image */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly; /* Space out buttons horizontally */
+  align-items: flex-end; /* Align items to the bottom of the image */
+  padding-bottom: 2%; /* Adjust spacing from the bottom of the image */
+}
+
+.door-container {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+}
+
+.code-input {
+  padding: 5px;
+  font-size: 14px;
+  width: 80%;
+  margin-right: 60%;
+  text-align: center;
+}
+
+#doors button {
+  border: none;
+  cursor: pointer;
+}
+
+#doors button:hover {
+  background-color: rgba(100, 0, 100, 0); /* Unique hover effect */
+}
+.door-button {
+  background-color: rgba(100, 0, 100, 0);
+  width: 15%; /* Button dimensions */
+  height: 40%;
+  content: '';                   /* Pseudo-element for the image */
+  position: absolute;
+  top: 20%;                      /* Center the image vertically */
+  left: 20%;                     /* Center the image horizontally */
+  width: 20%;                    /* 50% of button width */
+  height: 40%;                   /* 50% of button height */
+  background-image: url("assets/images/padlock.png");
+  background-size: contain;      /* Make the image fit within its bounds */
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+
+#startBattleButton
+{
+  margin-bottom: 20px;
+}
+
+.popup-button {
+  width: auto; /* Button dimensions */
+  height: auto;
+  position: absolute;
+  margin-top: 10px;
+  background-size: contain;      /* Make the image fit within its bounds */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(100, 0, 100, 0); /* Light semi-transparent background */
+
+}
+.door-button.hidden-image {
+  background-image: none; /* Hide the image by removing it */
+}
+
+#east-wing-door-clue {
+  top: 90%;
+  left: 14%;
+}
+
+#west-wing-door-clue {
+  top: 90%;
+  left: 36%;
+}
+
+#dungeon-door-clue {
+  top: 90%;
+  left: 82%;
+}
+
+#bedroom-door-clue {
+  top: 90%;
+  left: 61%;
+}
+
+#east-wing {
+  top: 40%;
+  left: 15%;
+}
+
+#west-wing {
+  top: 40%;
+  left: 37%;
+}
+
+#dungeon {
+  top: 40%;
+  left: 83%;
+}
+
+#bedroom {
+  top: 40%;
+  left: 60%;
+}
+
+/* Pop-up note styling */
+.note {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f5f5dc; /* Light beige background for the note */
+  color: #333;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  text-align: center;
+  z-index: 1000; /* Ensure it appears on top */
+  width: 70%; /* Takes up 70% of the screen width */
+  height: 50%; /* Takes up 70% of the screen width */
+  max-width: 700px; /* Max width to prevent it from being too large */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Backdrop overlay */
+.note.hidden {
+  display: none;
+}
+
+/* Close button styling */
+#closeNote {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#closeNote:hover {
+  background-color: #555;
+}
+
+/* Images inside the riddle images container */
+#riddleImages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Space between images and text */
+  margin-bottom: 20px;
+}
+
+#riddleImages img {
+  width: 20%; /* Adjust image size */
+  height: auto;
+}
+
+#riddleImages h2 {
+  margin: 0; /* Removes default margin */
+  font-size: 18px;
+}
+
+#riddleInput {
+  padding: 10px;
+  width: 70%;
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+#timer {
+  font-size: 18px;
+  font-weight: bold;
+  color: orange;
+  margin: 10px 0;
+}
+
+#introText {
+  text-align: center;
+  margin: 50px auto;
+  font-size: 18px;
+  color: white;
+}
+
+#light-controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.light-selector {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: grey;
+  border: 3px solid #333;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.light-selector:hover {
+  border-color: white;
+}
+
+#color-options button {
+  position: unset;
+  width: 40px;
+  height: 40px;
+  border-radius: 50% 30%;
+  transform: translateX(0%);
+  border: 2px solid #222;
+  cursor: pointer;
+}
+
+#submitLightGuess {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #444;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#submitLightGuess:hover {
+  background-color: #666;
+}
+
+#lightFeedback {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 15px;
+}

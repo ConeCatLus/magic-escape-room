@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escape Room - Save the Dragon Egg</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <audio id="backgroundAudio" class="hidden" loop autoplay>
+    <source src="assets/audio/background.mp3" type="audio/mp3">
+  </audio>
+  <div id="blackSquare" class="black-square">
+    <!-- Start Screen -->
+    <div id="startScreen" class="screen">
+        <h1>🔥 Quest: The Last Dragon’s Fate 🔥</h1>
+        <button id="beginButton">Begin</button>
+    </div>
+
+     <!-- Lore narrator Screen -->
+     <div id="loreNarratorScreen" class="screen hidden">
+        <h1>🔥 Quest: The Last Dragon’s Fate 🔥</h1>
+        <div id="loreNarratorText" class="narrator-text"></div>
+        <audio id="loreNarratorAudio" class="hidden" >
+            <source src="assets/audio/loreNarrator.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+        <!-- <button id="loreNarratorButton">Start quest</button> -->
+        <button id="loreNarratorButton" class="hidden">Start quest</button>
+    </div>
+
+    <!-- Quest narrator Screen -->
+    <div id="questNarratorScreen" class="screen hidden">
+        <h1>🔥 The Hunt Begins 🔥</h1>
+        <div id="questNarratorText" class="narrator-text"></div>
+        <audio id="questNarratorAudio" class="hidden" >
+            <source src="assets/audio/questBegins.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+        <!-- <button id="questNarratorButton">Locate lair</button> -->
+        <button id="questNarratorButton" class="hidden">Locate lair</button> 
+    </div>
+
+    <!-- Map locator Screen -->
+    <div id="mapLocatorScreen" class="screen hidden">
+        <h1>🔎 Find Malakar's Lair 🔎</h1>
+        <div id="mapLocatorText" class="narrator-text"></div>
+        <audio id="mapLocatorAudio" class="hidden">
+            <source src="assets/audio/mapLocatorRiddle.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+
+        <div id="input-container">
+            <label for="coordinates">Enter coordinates (e.g., A5):</label>
+            <input type="text" id="coordinates" placeholder="LetterNumber" maxlength="2" />
+            <button id="submit-coordinates">Submit</button>
+            <p id="feedback" class="hidden"></p>
+        </div>
+    
+        <div id="map-container">
+            <img src="assets/images/map.webp" alt="Map" id="map" />
+            <div id="reveal-area"></div>
+        </div>
+    </div>
+
+    <!-- Malakar’s Gate screen -->
+    <div id="gateScreen" class="screen hidden">
+        <h1>✨ Malakar's Gate ✨</h1>
+        <div id="gateText" class="narrator-text"></div>
+        <audio id="gateNarratorAudio" class="hidden" >
+            <source src="assets/audio/MalakarsGateNarrator.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+
+        <div id="input-container">
+          <input type="text" id="gate1" placeholder="Letters" maxlength="30" />
+        </div>
+        
+        <p id="gateFeedback"></p>
+        <button id="gateButton" class="">Go inside</button>
+    </div>
+
+    <div id="greatHallScreen" class="screen hidden">
+      <audio id="greatHallAudio" class="hidden" >
+        <source src="assets/audio/greatHall.mp3" type="audio/mp3">
+      </audio>
+      <h1 >✨ Great Hall ✨</h1>
+          <img src="assets/images/doors.png" alt="Doors" id="door-image">
+          <div id="doors">
+            <div class="door-container">
+                <button id="east-wing" class="door-button"></button>
+                <input id="east-wing-code" class="code-input" type="text" placeholder="Enter code">
+                <button id="east-wing-door-clue" class="popup-button">?</button>
+            </div>
+            <div class="door-container">
+                <button id="west-wing" class="door-button"></button>
+                <input id="west-wing-code" class="code-input" type="text" placeholder="Enter code">
+                <button id="west-wing-door-clue" class="popup-button">?</button>
+            </div>
+            <div class="door-container">
+                <button id="bedroom" class="door-button"></button>
+                <input id="bedroom-code" class="code-input" type="text" placeholder="Enter code">
+                <button id="bedroom-door-clue" class="popup-button">?</button>
+            </div>
+            <div class="door-container">
+                <button id="dungeon" class="door-button"></button>
+                <input id="dungeon-code" class="code-input" type="text" placeholder="Enter code">
+                <button id="dungeon-door-clue" class="popup-button">?</button>
+            </div>
+          </div>
+          <div id="east-wing-PopUpNote" class="note hidden">
+            <h2>Clue</h2>
+            <h2>My favorite ship was spanish</h2>
+            <button id="east-wing-closeNote" class="close-popup-button">Close</button>
+          </div>
+          <div id="west-wing-PopUpNote" class="note hidden">
+            <h2>Clue</h2>
+            <h2>Align my candles</h2>
+            <button id="west-wing-closeNote" class="close-popup-button">Close</button>
+          </div>
+          <div id="bedroom-PopUpNote" class="note hidden">
+            <h2>Clue</h2>
+            <div id="riddleImages">
+              <img src="assets/images/hashtag.png" alt="Clue 1">
+              <h2>OF</h2>
+              <img src="assets/images/cats.png" alt="Clue 2">
+              <h2>IN</h2>
+              <img src="assets/images/waves.png" alt="Clue 3">
+            </div>
+            <button id="bedroom-closeNote" class="close-popup-button">Close</button>
+          </div>
+          <div id="dungeon-PopUpNote" class="note hidden">
+            <h2>Clue</h2>
+            <h2>How many passengers take the newst tram?</h2>
+            <button id="dungeon-closeNote" class="close-popup-button">Close</button>
+          </div>
+    </div>
+    <button id="startBattleButton" class="hidden">Battle Malakar!</button>
+
+    <!-- East wing screen -->
+    <div id="eastWingScreen" class="hidden">
+      <h1>✨ The Master Bathroom ✨</h1>
+      <p id="eastWingText">What does the puzzle reveal?</p>
+  
+      <div id="inputContainer">
+        <input type="text" id="eastWingAnswer" placeholder="What did you learn?">
+        <button id="eastWingSubmitButton">Answer</button>
+      <p id="eastWingFeedback"></p>
+      </div>
+
+      <div id="eastWingClue" class="note hidden">
+        <h2>Clue</h2>
+        <p>“Malakar will mimic your every move!”</p>
+      </div>
+      
+      <button id="eastWingBackButton" class="back-button">Back</button>
+    </div>
+
+    <!-- West wing screen -->
+    <div id="westWingScreen" class="hidden">
+      <h1>✨ The kitchen ✨</h1>
+      <p id="westWingText">Find the hidden ingredient</p>
+  
+      <div id="inputContainer">
+        <input type="text" id="westWingAnswer" placeholder="What did you find?">
+        <button id="westWingSubmitButton">Answer</button>
+      <p id="westWingFeedback"></p>
+      </div>
+
+      <div id="westWingClue" class="note hidden">
+        <h2>Clue</h2>
+        <p>“Magic Barrier(🛡️) beats Fireball(🔥) and Shadow Veil(🌑)”</p>
+      </div>
+      
+      <button id="westWingBackButton" class="back-button">Back</button>
+    </div>
+    <!-- widowsBedroomScreen screen -->
+    <div id="widowsBedroomScreen" class="hidden">
+      <div id="introText">
+        <h1>✨ The Widows bedroom ✨</h1>
+        <p>You must answer 5 riddles correctly in a row to escape. Beware: one wrong answer will restart the challenge!</p>
+        <button id="startRiddles">Start the Challenge</button>
+      </div>
+      
+      <div id="riddleGame" class="hidden">
+        <p id="currentRiddle"></p>
+        <p id="timer">Time Left: <span id="timeLeft">60</span> seconds</p>
+        <input type="text" id="riddleInput" placeholder="Type your answer">
+        <button id="submitRiddleAnswer">Submit</button>
+        <p id="riddleFeedback"></p>
+        <p>Correct in a row: <span id="correctCount">0</span>/5</p>
+      </div>
+      <div id="widowsBedroomClue" class="note hidden">
+        <h2>Clue</h2>
+        <p>“Fireball(🔥) beats Ice Storm(❄️) and Shadow Veil(🌑)”</p>
+      </div>
+      <button id="widowsBedroomBackButton" class="back-button">Back</button>
+    </div>
+
+    <!-- dungeonScreen -->
+    <div id="dungeonScreen" class="screen hidden">
+      <h1>💡 The Dungeon Mastermind 💡</h1>
+      <p>Malakar has sealed the gate with a magical light sequence. Select the correct colors to proceed!</p>
+
+      <div id="light-controls">
+          <div class="light-selector" data-index="0"></div>
+          <div class="light-selector" data-index="1"></div>
+          <div class="light-selector" data-index="2"></div>
+          <div class="light-selector" data-index="3"></div>
+      </div>
+      
+      <button id="submitLightGuess">Submit</button>
+      <p id="lightFeedback"></p>
+      <div id="lightAttempts"></div>
+
+      <div id="dungeonClue" class="note hidden">
+        <h2>Clue</h2>
+        <p>“Thunder Strike(⚡) beats Fireball(🔥), Ice Storm(❄️), and Shadow Veil(🌑)”</p>
+      </div>
+      <button id="dungeonBackButton" class="back-button">Back</button>
+    </div>  
+
+    <!-- Battle Screen -->
+    <div id="battleScreen" class="hidden">
+      <audio id="battleAudio" class="hidden">
+        <source src="assets/audio/battle.mp3" type="audio/mp3">
+      </audio>
+      <h1>⚔️ Battle Malakar! ⚔️</h1>
+      <p id="battle-message">Defeat Malakar!</p>
+    
+      <!-- Player and Malakar Avatars with Health Bars -->
+      <div id="avatars">
+        <!-- Player Avatar -->
+        <div class="avatar">
+          <img src="assets/images/map.webp" alt="Player Avatar" class="avatar-image">
+          <div class="health-bar-container">
+            <div id="player-health-bar" class="health-bar">
+              <div id="player-health" class="health"></div>
+            </div>
+            <p>Player Health</p>
+          </div>
+        </div>
+    
+        <!-- Malakar Avatar -->
+        <div class="avatar">
+          <img src="assets/images/gate.avif" alt="Malakar Avatar" class="avatar-image">
+          <div class="health-bar-container">
+            <div id="malakar-health-bar" class="health-bar">
+              <div id="malakar-health" class="health"></div>
+            </div>
+            <p>Malakar Health</p>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Spell Buttons -->
+      <div id="player-spells">
+          <button id="fireball" data-spell="Fireball">🔥 Fireball</button>
+          <button id="ice-storm" data-spell="Ice Storm">❄️ Ice Storm</button>
+          <button id="magic-barrier" data-spell="Magic Barrier">🛡️ Magic Barrier</button>
+          <button id="thunder-strike" data-spell="Thunder Strike">⚡ Thunder Strike</button>
+          <button id="shadow-veil" data-spell="Shadow Veil">🌑 Shadow Veil</button>
+        </div>
+      <p id="battle-feedback"></p>
+
+      <button id="finalButton" class="hidden">Save the egg!</button>
+      <button id="battleBackButton" class="back-button">Back</button>
+    </div>
+
+  <!-- Victory screen -->
+    <div id="victoryScreen" class="screen hidden">
+      <h1>🔥 Victorious! 🔥</h1>
+      <div id="victoryText" class="narrator-text"></div>
+      <audio id="victoryAudio" class="hidden" >
+          <source src="assets/audio/victory.mp3" type="audio/mp3">
+      </audio>
+  </div>
+  </div>
+
+  <script type="module" src="scripts/start.js"></script>
+  <script type="module" src="scripts/loreNarrator.js"></script>
+  <script type="module" src="scripts/questBegins.js"></script>
+  <script type="module" src="scripts/mapFinder.js"></script>
+  <script type="module" src="scripts/malakarsGate.js"></script>
+  <script type="module" src="scripts/greatHall.js"></script>
+  <script type="module" src="scripts/eastWing.js"></script>
+  <script type="module" src="scripts/westWing.js"></script>
+  <script type="module" src="scripts/dungeon.js"></script>
+  <script type="module" src="scripts/widowsBedroom.js"></script>
+  <script type="module" src="scripts/malakarsTower.js"></script>
+  <script type="module" src="scripts/victory.js"></script>
+</body>
+
+</html>
