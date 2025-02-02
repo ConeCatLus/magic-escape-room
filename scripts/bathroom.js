@@ -1,10 +1,10 @@
-const submitButton = document.getElementById('eastWingSubmitButton');
-const answerInput = document.getElementById('eastWingAnswer');
-const feedback = document.getElementById('eastWingFeedback');
+const submitButton = document.getElementById('bathroomSubmitButton');
+const answerInput = document.getElementById('bathroomAnswer');
+const feedback = document.getElementById('bathroomFeedback');
 const greatHallScreen = document.getElementById('greatHallScreen');
-const eastWingScreen = document.getElementById('eastWingScreen');
-const eastWingNarratorAudio = document.getElementById('eastWingNarratorAudio');
-const backButton = document.getElementById('eastWingBackButton');
+const bathroomScreen = document.getElementById('bathroomScreen');
+const bathroomNarratorAudio = document.getElementById('bathroomNarratorAudio');
+const backButton = document.getElementById('bathroomBackButton');
 
 // Correct answer
 const correctAnswer = "4378";
@@ -16,9 +16,7 @@ submitButton.addEventListener('click', () => {
   {
     feedback.style.color = "lime";
     feedback.textContent = "Correct!";
-    // eastWingNarratorAudio.pause();
-    // eastWingNarratorAudio.currentTime = 0;
-    document.getElementById("eastWingClue").classList.remove("hidden");
+    document.getElementById("bathroomClue").classList.remove("hidden");
   } else 
   {
     feedback.style.color = "red";
@@ -27,16 +25,14 @@ submitButton.addEventListener('click', () => {
 });
 
 backButton.addEventListener('click', () => {
-  // eastWingNarratorAudio.pause();
-  // eastWingNarratorAudio.currentTime = 0;
-  eastWingScreen.classList.add("hidden"); // Hide the narrator screen
+  bathroomScreen.classList.add("hidden"); // Hide the narrator screen
   greatHallScreen.classList.remove("hidden"); // Show the game screen
   document.body.style.background = "url('assets/images/stone_texture.jpg') no-repeat center center fixed";
   document.body.style.backgroundSize = "cover";
 
   const clues = [
-    document.getElementById("westWingClue"),
-    document.getElementById("eastWingClue"),
+    document.getElementById("kitchenClue"),
+    document.getElementById("bathroomClue"),
     document.getElementById("widowsBedroomClue"),
     document.getElementById("dungeonClue")
   ];

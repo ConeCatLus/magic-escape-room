@@ -410,12 +410,12 @@
   background-image: none; /* Hide the image by removing it */
 }
 
-#east-wing-door-clue {
+#bathroom-door-clue {
   top: 90%;
   left: 14%;
 }
 
-#west-wing-door-clue {
+#kitchen-door-clue {
   top: 90%;
   left: 36%;
 }
@@ -430,12 +430,12 @@
   left: 61%;
 }
 
-#east-wing {
+#bathroom {
   top: 40%;
   left: 15%;
 }
 
-#west-wing {
+#kitchen {
   top: 40%;
   left: 37%;
 }

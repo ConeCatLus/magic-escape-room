@@ -85,8 +85,8 @@ backButton.addEventListener('click', () => {
     document.body.style.backgroundSize = "cover";
 
     const clues = [
-        document.getElementById("westWingClue"),
-        document.getElementById("eastWingClue"),
+        document.getElementById("kitchenClue"),
+        document.getElementById("bathroomClue"),
         document.getElementById("widowsBedroomClue"),
         document.getElementById("dungeonClue")
       ];

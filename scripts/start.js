@@ -5,7 +5,7 @@ const beginButton = document.getElementById('beginButton');
 const loreNarratorAudio = document.getElementById("loreNarratorAudio");
 
 const gateScreen = document.getElementById('gateScreen'); // REMOVE
-const eastWing = document.getElementById('eastWingScreen'); // REMOVE
+const bathroom = document.getElementById('bathroomScreen'); // REMOVE
 const battleScreen = document.getElementById('battleScreen'); // REMOVE
 
 var audio = document.getElementById('backgroundAudio');

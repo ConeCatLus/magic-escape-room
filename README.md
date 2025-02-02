@@ -18,8 +18,8 @@ Tie Rule:
 If both the player and Malakar choose the same spell, Malakar wins the round.
 
 # Screen flow
-start -> loreNarrator -> questBegins -> mapFinder -> malakarsGate -> greatHall -> eastWing
-                                                                               -> westWing
+start -> loreNarrator -> questBegins -> mapFinder -> malakarsGate -> greatHall -> bathroom
+                                                                               -> kitchen
                                                                                -> library
                                                                                -> dungeon
                                                                                -> malakarsTower -> Victory

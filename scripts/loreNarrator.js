@@ -52,11 +52,8 @@ narratorAudio.addEventListener("ended", () => {
 
 // Transition from Narrator Screen to Game Screen
 loreNarratorButton.addEventListener("click", () => {
-  // if (currentParagraphIndex === 6)
-  // {
     loreNarratorScreen.classList.add("hidden"); // Hide the narrator screen
     questNarratorScreen.classList.remove("hidden"); // Show the game screen
     loreNarratorAudio.pause();
     questNarratorAudio.play();
-  // }
 });

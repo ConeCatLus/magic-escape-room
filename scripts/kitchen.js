@@ -1,11 +1,11 @@
-const submitButton = document.getElementById('westWingSubmitButton');
-const answerInput = document.getElementById('westWingAnswer');
-const feedback = document.getElementById('westWingFeedback');
+const submitButton = document.getElementById('kitchenSubmitButton');
+const answerInput = document.getElementById('kitchenAnswer');
+const feedback = document.getElementById('kitchenFeedback');
 const greatHallScreen = document.getElementById('greatHallScreen');
-const westWingScreen = document.getElementById('westWingScreen');
-const eastWingNarratorAudio = document.getElementById('westWingNarratorAudio');
+const kitchenScreen = document.getElementById('kitchenScreen');
+const bathroomNarratorAudio = document.getElementById('kitchenNarratorAudio');
 
-const backButton = document.getElementById('westWingBackButton');
+const backButton = document.getElementById('kitchenBackButton');
 
 // Correct answer
 const correctAnswer = "bLooDy";
@@ -17,9 +17,9 @@ submitButton.addEventListener('click', () => {
   {
     feedback.style.color = "lime";
     feedback.textContent = "Correct!";
-    // eastWingNarratorAudio.pause();
-    // eastWingNarratorAudio.currentTime = 0;
-    document.getElementById("westWingClue").classList.remove("hidden");
+    // bathroomNarratorAudio.pause();
+    // bathroomNarratorAudio.currentTime = 0;
+    document.getElementById("kitchenClue").classList.remove("hidden");
   } else 
   {
     feedback.style.color = "red";
@@ -28,15 +28,15 @@ submitButton.addEventListener('click', () => {
 });
 
 backButton.addEventListener('click', () => {
-    // eastWingNarratorAudio.pause();
-    // eastWingNarratorAudio.currentTime = 0;
-    westWingScreen.classList.add("hidden"); // Hide the narrator screen
+    // bathroomNarratorAudio.pause();
+    // bathroomNarratorAudio.currentTime = 0;
+    kitchenScreen.classList.add("hidden"); // Hide the narrator screen
     greatHallScreen.classList.remove("hidden"); // Show the game screen
     document.body.style.background = "url('assets/images/stone_texture.jpg') no-repeat center center fixed";
     document.body.style.backgroundSize = "cover";
     const clues = [
-      document.getElementById("westWingClue"),
-      document.getElementById("eastWingClue"),
+      document.getElementById("kitchenClue"),
+      document.getElementById("bathroomClue"),
       document.getElementById("widowsBedroomClue"),
       document.getElementById("dungeonClue")
     ];

@@ -88,14 +88,14 @@
           <img src="assets/images/doors.png" alt="Doors" id="door-image">
           <div id="doors">
             <div class="door-container">
-                <button id="east-wing" class="door-button"></button>
-                <input id="east-wing-code" class="code-input" type="text" placeholder="Enter code">
-                <button id="east-wing-door-clue" class="popup-button">?</button>
+                <button id="bathroom" class="door-button"></button>
+                <input id="bathroom-code" class="code-input" type="text" placeholder="Enter code">
+                <button id="bathroom-door-clue" class="popup-button">?</button>
             </div>
             <div class="door-container">
-                <button id="west-wing" class="door-button"></button>
-                <input id="west-wing-code" class="code-input" type="text" placeholder="Enter code">
-                <button id="west-wing-door-clue" class="popup-button">?</button>
+                <button id="kitchen" class="door-button"></button>
+                <input id="kitchen-code" class="code-input" type="text" placeholder="Enter code">
+                <button id="kitchen-door-clue" class="popup-button">?</button>
             </div>
             <div class="door-container">
                 <button id="bedroom" class="door-button"></button>
@@ -108,15 +108,15 @@
                 <button id="dungeon-door-clue" class="popup-button">?</button>
             </div>
           </div>
-          <div id="east-wing-PopUpNote" class="note hidden">
+          <div id="bathroom-PopUpNote" class="note hidden">
             <h2>Clue</h2>
             <h2>My favorite ship was spanish</h2>
-            <button id="east-wing-closeNote" class="close-popup-button">Close</button>
+            <button id="bathroom-closeNote" class="close-popup-button">Close</button>
           </div>
-          <div id="west-wing-PopUpNote" class="note hidden">
+          <div id="kitchen-PopUpNote" class="note hidden">
             <h2>Clue</h2>
             <h2>Align my candles</h2>
-            <button id="west-wing-closeNote" class="close-popup-button">Close</button>
+            <button id="kitchen-closeNote" class="close-popup-button">Close</button>
           </div>
           <div id="bedroom-PopUpNote" class="note hidden">
             <h2>Clue</h2>
@@ -137,42 +137,42 @@
     </div>
     <button id="startBattleButton" class="hidden">Battle Malakar!</button>
 
-    <!-- East wing screen -->
-    <div id="eastWingScreen" class="hidden">
+    <!-- Bathroom screen -->
+    <div id="bathroomScreen" class="hidden">
       <h1>✨ The Master Bathroom ✨</h1>
-      <p id="eastWingText">What does the puzzle reveal?</p>
+      <p id="bathroomText">What does the puzzle reveal?</p>
   
       <div id="inputContainer">
-        <input type="text" id="eastWingAnswer" placeholder="What did you learn?">
-        <button id="eastWingSubmitButton">Answer</button>
-      <p id="eastWingFeedback"></p>
+        <input type="text" id="bathroomAnswer" placeholder="What did you learn?">
+        <button id="bathroomSubmitButton">Answer</button>
+      <p id="bathroomFeedback"></p>
       </div>
 
-      <div id="eastWingClue" class="note hidden">
+      <div id="bathroomClue" class="note hidden">
         <h2>Clue</h2>
         <p>“Malakar will mimic your every move!”</p>
       </div>
       
-      <button id="eastWingBackButton" class="back-button">Back</button>
+      <button id="bathroomBackButton" class="back-button">Back</button>
     </div>
 
-    <!-- West wing screen -->
-    <div id="westWingScreen" class="hidden">
+    <!-- Kitchen screen -->
+    <div id="kitchenScreen" class="hidden">
       <h1>✨ The kitchen ✨</h1>
-      <p id="westWingText">Find the hidden ingredient</p>
+      <p id="kitchenText">Find the hidden ingredient</p>
   
       <div id="inputContainer">
-        <input type="text" id="westWingAnswer" placeholder="What did you find?">
-        <button id="westWingSubmitButton">Answer</button>
-      <p id="westWingFeedback"></p>
+        <input type="text" id="kitchenAnswer" placeholder="What did you find?">
+        <button id="kitchenSubmitButton">Answer</button>
+      <p id="kitchenFeedback"></p>
       </div>
 
-      <div id="westWingClue" class="note hidden">
+      <div id="kitchenClue" class="note hidden">
         <h2>Clue</h2>
         <p>“Magic Barrier(🛡️) beats Fireball(🔥) and Shadow Veil(🌑)”</p>
       </div>
       
-      <button id="westWingBackButton" class="back-button">Back</button>
+      <button id="kitchenBackButton" class="back-button">Back</button>
     </div>
     <!-- widowsBedroomScreen screen -->
     <div id="widowsBedroomScreen" class="hidden">
@@ -283,8 +283,8 @@
   <script type="module" src="scripts/mapFinder.js"></script>
   <script type="module" src="scripts/malakarsGate.js"></script>
   <script type="module" src="scripts/greatHall.js"></script>
-  <script type="module" src="scripts/eastWing.js"></script>
-  <script type="module" src="scripts/westWing.js"></script>
+  <script type="module" src="scripts/bathroom.js"></script>
+  <script type="module" src="scripts/kitchen.js"></script>
   <script type="module" src="scripts/dungeon.js"></script>
   <script type="module" src="scripts/widowsBedroom.js"></script>
   <script type="module" src="scripts/malakarsTower.js"></script>

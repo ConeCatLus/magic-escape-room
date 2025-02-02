@@ -1,20 +1,20 @@
-const eastWingNarratorAudio = document.getElementById('eastWingNarratorAudio');
-const eastWingButton = document.getElementById("east-wing");
-const westWingButton = document.getElementById("west-wing");
+const bathroomNarratorAudio = document.getElementById('bathroomNarratorAudio');
+const bathroomButton = document.getElementById("bathroom");
+const kitchenButton = document.getElementById("kitchen");
 const bedroomButton = document.getElementById("bedroom");
 const dungeonButton = document.getElementById("dungeon");
 const finalBossButtons = document.getElementById("startBattleButton");
 const battleAudio = document.getElementById("battleAudio");
 
-eastWingButton.disabled = true;
-westWingButton.disabled = true;
+bathroomButton.disabled = true;
+kitchenButton.disabled = true;
 bedroomButton.disabled = true;
 dungeonButton.disabled = true;
 
 // Example codes for each door
 const doorCodes = {
-  "east-wing": "Remolcador", // The spanish ship
-  "west-wing": "3710351", // Align the candles
+  "bathroom": "Remolcador", // The spanish ship
+  "kitchen": "3710351", // Align the candles
   "bedroom": "554", // number of cats in waves, could be 553 as well
   "dungeon": "230" //  How many passengers fit in the latest tram model
 };
@@ -40,7 +40,7 @@ const buttons = document.querySelectorAll('.popup-button');
 // Add event listeners for each button
 buttons.forEach(button => {
   button.addEventListener('click', () => {
-    // Get the ID of the button clicked (e.g., "east-wing-door-clue")
+    // Get the ID of the button clicked (e.g., "bathroom-door-clue")
     const buttonId = button.id;
 
     // Find the corresponding pop-up note
@@ -59,7 +59,7 @@ const closeButtons = document.querySelectorAll('.close-popup-button');
 // Add event listeners for each button
 closeButtons.forEach(closeButton => {
   closeButton.addEventListener('click', () => {
-    // Get the ID of the button clicked (e.g., "east-wing-door-clue")
+    // Get the ID of the button clicked (e.g., "bathroom-door-clue")
     const buttonId = closeButton.id;
 
     const popupNoteId = buttonId.replace('closeNote', 'PopUpNote');
@@ -87,11 +87,11 @@ function enterRoom(room) {
 }
 
 // Attach event listeners to buttons
-eastWingButton.addEventListener("click", () => {
-  enterRoom("eastWing");
+bathroomButton.addEventListener("click", () => {
+  enterRoom("bathroom");
 });
-westWingButton.addEventListener("click", () => {
-  enterRoom("westWing");
+kitchenButton.addEventListener("click", () => {
+  enterRoom("kitchen");
 });
 bedroomButton.addEventListener("click", () => {
   document.body.style.background = "url('assets/images/dungeon.jpg') no-repeat center center fixed";
